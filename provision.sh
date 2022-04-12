@@ -6,15 +6,18 @@
 # commands must be executed in privileged mode
 systemctl restart network
 
+# dependencies
 yum install -y centos-release net-tools vim curl wget;
-
 rpm -ivh https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-14.noarch.rpm
 
+# apache
 yum install -y httpd
 systemctl enable httpd --now
 
+# basic configuration
 rm -f /etc/httpd/conf.d/welcome.conf
 
+# example page
 cat <<EOF > /var/www/html/index.html 
 <!DOCTYPE html>
 <html lang="en">
